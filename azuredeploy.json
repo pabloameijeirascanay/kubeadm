@@ -111,7 +111,8 @@
     },
     "variables": {
       "ArcK8sClusterName": "[concat('Arc-DataSvc-Kubeadm','-',parameters('guid'))]",
-      "templateBaseUrl": "[concat('https://raw.githubusercontent.com/', parameters('githubAccount'), '/azure_arc/', parameters('githubBranch'), '/azure_arc_data_jumpstart/kubeadm/azure/ARM/')]",
+      "templateBaseUrl": "[concat('https://raw.githubusercontent.com/', 'pabloameijeirascanay', '/kubeadm/', parameters('githubBranch'), '/')]",
+      //"templateBaseUrl": "[concat('https://raw.githubusercontent.com/', parameters('githubAccount'), '/azure_arc/', parameters('githubBranch'), '/azure_arc_data_jumpstart/kubeadm/azure/ARM/')]",
       "kubeadmTemplateUrl": "[uri(variables('templateBaseUrl'), 'ubuntuKubeadm.json')]",
       "clientVmTemplateUrl": "[uri(variables('templateBaseUrl'), 'clientVm.json')]",
       "mgmtStagingStorageUrl": "[uri(variables('templateBaseUrl'), 'mgmtStagingStorage.json')]",

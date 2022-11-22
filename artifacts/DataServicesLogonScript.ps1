@@ -77,7 +77,7 @@ $sourceFile = "https://$Env:stagingStorageAccountName.blob.core.windows.net/stag
 $context = (Get-AzStorageAccount -ResourceGroupName $Env:resourceGroup).Context
 $sas = New-AzStorageAccountSASToken -Context $context -Service Blob -ResourceType Object -Permission racwdlup
 $sourceFile = $sourceFile + $sas
-azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFile  "C:\Users\$Env:USERNAME\.kube\config"
+azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFile  "C:\Users\$Env:adminUsername\.kube\config"
 
 # Downloading 'installKubeadm.log' log file
 Write-Host "Downloading 'installKubeadm.log' log file"
@@ -131,15 +131,6 @@ az k8s-extension create --name "azuremonitor-containers" `
                         --cluster-type connectedClusters `
                         --extension-type Microsoft.AzureMonitor.Containers `
                         --configuration-settings logAnalyticsWorkspaceResourceID=$workspaceResourceId
-
-# Deploying Azure Defender Kubernetes extension instance
-Write-Host "Create Azure Defender Kubernetes extension instance"
-Write-Host "`n"
-az k8s-extension create --name "azure-defender" `
-                        --cluster-name $Env:ArcK8sClusterName `
-                        --resource-group $Env:resourceGroup `
-                        --cluster-type connectedClusters `
-                        --extension-type Microsoft.AzureDefender.Kubernetes
 
 Start-Sleep -Seconds 10
 
