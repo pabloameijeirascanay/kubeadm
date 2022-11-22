@@ -174,7 +174,7 @@ az connectedk8s enable-features -n $Env:ArcK8sClusterName `
                                 --custom-locations-oid $Env:customLocationRPOID `
                                 --features cluster-connect custom-locations
 
-$customLocationName = "$Env:ArcK8sClusterNam-cl"
+$customLocationName = "$Env:ArcK8sClusterName-cl"
 
 az customlocation create --name $customlocationName `
                          --resource-group $Env:resourceGroup `
